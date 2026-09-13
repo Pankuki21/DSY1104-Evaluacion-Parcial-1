@@ -1,107 +1,135 @@
+// Arreglo de productos
 const productos = [
     {
         codigo: "PR001",
         nombre: "Mesa de comedor 6 puestos",
         categoria: "Muebles",
         material: "Madera de roble",
-        horasProduccion: 8,
+        tiempo: 8,
         precio: 250000,
-        stock: 25
+        stock: 25,
+        imagen: "mesa-comedor.jpg"
     },
     {
         codigo: "PR002",
         nombre: "Silla de comedor",
         categoria: "Muebles",
         material: "Madera de pino",
-        horasProduccion: 3,
+        tiempo: 3,
         precio: 65000,
-        stock: 120
+        stock: 120,
+        imagen: "silla-comedor.jpg"
     },
     {
         codigo: "PR003",
         nombre: "Escritorio ejecutivo",
         categoria: "Oficina",
         material: "Madera de nogal",
-        horasProduccion: 10,
+        tiempo: 10,
         precio: 380000,
-        stock: 15
+        stock: 15,
+        imagen: "escritorio-ejecutivo.jpg"
     },
     {
         codigo: "PR004",
         nombre: "Estantería de oficina",
         categoria: "Oficina",
         material: "Madera de pino",
-        horasProduccion: 6,
+        tiempo: 6,
         precio: 180000,
-        stock: 30
+        stock: 30,
+        imagen: "estanteria-oficina.jpg"
     },
     {
         codigo: "PR005",
         nombre: "Ropero con espejo",
         categoria: "Muebles",
         material: "Madera de roble",
-        horasProduccion: 12,
+        tiempo: 12,
         precio: 420000,
-        stock: 10
+        stock: 10,
+        imagen: "ropero-espejo.jpg"
     },
     {
         codigo: "PR006",
         nombre: "Mesón de cocina",
         categoria: "Muebles",
         material: "Madera de nogal",
-        horasProduccion: 14,
+        tiempo: 14,
         precio: 520000,
-        stock: 8
+        stock: 8,
+        imagen: "encimera-cocina.jpg"
     }
 ];
 
+// Mostrar productos
 function mostrarProductos() {
-    const contenedor = document.getElementById("lista-productos");
-    if (!contenedor) {
+    const lista = document.getElementById("lista-productos");
+    if (!lista) {
         return;
     }
 
-    productos.forEach(producto => {
+    for (let producto of productos) {
         const columna = document.createElement("div");
-        columna.classList.add("col-md-4");
-
+        columna.className = "col-md-4";
         const tarjeta = document.createElement("article");
-        tarjeta.classList.add("card", "h-100");
+        tarjeta.className = "card h-100";
 
-        tarjeta.innerHTML = `
-            <img
-                src="../img/productos/${producto.codigo}.jpg"
-                class="card-img-top"
-                alt="${producto.nombre}">
+        // Imagen del producto
+        const imagen = document.createElement("img");
+        imagen.src = "../img/productos/" + producto.imagen;
+        imagen.alt = producto.nombre;
+        imagen.className = "card-img-top";
+        const cuerpo = document.createElement("div");
+        cuerpo.className = "card-body";
 
-            <div class="card-body">
-                <h3 class="card-title">
-                    ${producto.nombre}
-                </h3>
-                <p class="card-text">
-                    ${producto.material}
-                </p>
-                <p class="card-text">
-                    <strong>$${producto.precio.toLocaleString("es-CL")}</strong>
-                </p>
-                <button
-                    type="button"
-                    class="btn btn-primary"
-                    onclick="verDetalle('${producto.codigo}')">
-                    Ver producto
-                </button>
-                <button
-                    type="button"
-                    class="btn btn-success"
-                    onclick="agregarAlCarrito('${producto.codigo}')">
-                    Agregar al carrito
-                </button>
-            </div>
-        `;
+        // Nombre
+        const nombre = document.createElement("h2");
+        nombre.className = "card-title";
+        nombre.textContent = producto.nombre;
 
+        // Precio
+        const precio = document.createElement("p");
+        precio.className = "card-text";
+        precio.textContent = "Precio: $" + producto.precio;
+
+        // Botón ver producto
+        const botonVer = document.createElement("a");
+        botonVer.className = "btn btn-secondary me-2";
+        botonVer.textContent = "Ver producto";
+        botonVer.href = "producto-" + producto.codigo.toLowerCase() + ".html";
+
+        // Botón agregar al carrito
+        const botonCarrito = document.createElement("button");
+        botonCarrito.className = "btn btn-primary";
+        botonCarrito.textContent = "Agregar al carrito";
+
+        botonCarrito.addEventListener("click", function () {
+            agregarAlCarrito(producto, botonCarrito);
+        });
+
+        cuerpo.appendChild(nombre);
+        cuerpo.appendChild(precio);
+        cuerpo.appendChild(botonVer);
+        cuerpo.appendChild(botonCarrito);
+        tarjeta.appendChild(imagen);
+        tarjeta.appendChild(cuerpo);
         columna.appendChild(tarjeta);
-        contenedor.appendChild(columna);
-    });
+        lista.appendChild(columna);
+    }
 }
 
 mostrarProductos();
+
+//Conecta botón
+for (let i = 0; i < productos.length; i++) {
+    const boton = document.getElementById(
+        "agregar-carrito-" + productos[i].codigo.toLowerCase()
+    );
+
+    if (boton) {
+        boton.addEventListener("click", function () {
+            agregarAlCarrito(productos[i], boton);
+        });
+    }
+}

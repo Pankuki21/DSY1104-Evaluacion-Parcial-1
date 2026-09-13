@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>    
+<head>   
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Productos de Maderas Finas">
-    <title>Productos | Maderas Finas</title>
+    <meta name="description" content="Detalle Silla de comedor">
+    <title>Silla de comedor | Maderas Finas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
@@ -22,8 +22,7 @@
                 width="80">
             </a>
             <ul class="navbar-nav flex-row ms-auto align-items-center">
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="home.html#inicio">
+                <li class="nav-item"><a class="nav-link px-3" href="home.html#inicio">
                         Inicio
                     </a>
                 </li>
@@ -48,9 +47,7 @@
                     </a>
                 </li> 
                 <li class="nav-item">
-                    <a class="nav-link px-3" href="registro.html">
-                        Registrarse
-                    </a>
+                    <a class="nav-link px-3" href="registro.html">Registrarse</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link px-3" href="inicio-sesion.html"
@@ -68,30 +65,39 @@
 </header>
 
 <main>
-    <section id="catalogo" class="py-5"> 
+    <section class="py-5">
         <div class="container">
-            <h1 class="text-center mb-4">Productos</h1>
-            <div id="lista-productos" class="row g-4"></div>
+            <a href="productos.html" class="btn btn-secondary mb-4">
+                Volver a productos
+            </a>
+            <article class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Silla de comedor</h1>
+                    <p><strong>Categoría:</strong> Muebles</p>
+                    <p><strong>Material:</strong> Madera de pino</p>
+                    <p><strong>Precio:</strong> $65000</p>
+                    <button id="agregar-carrito-pr002" class="btn btn-primary">
+                        Agregar al carrito
+                    </button>
+                </div>
+            </article>
         </div>
     </section>
 </main>
 
 <footer class="py-4">
     <div class="container text-center">
-
         <p class="mb-2">&copy; 2026 Maderas Finas</p>
-
         <nav aria-label="Navegación del pie de página">
             <a href="home.html#inicio">Inicio</a> |
-            <a href="home.html#nosotros">Nosotros</a> |
             <a href="productos.html">Productos</a> |
-            <a href="home.html#blog">Blog</a> |
-            <a href="home.html#contacto">Contacto</a>
+            <a href="carrito.html">Carrito</a>
         </nav>
     </div>
 </footer>
 
 <script src="../scripts/productos.js"></script>
 <script src="../scripts/carrito.js"></script>
+
 </body>
 </html>
