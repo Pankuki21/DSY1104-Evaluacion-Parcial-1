@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>URBAN STYLE - Registro de Clientes</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #1a1a1a; color: white; }
+    .card { background: #2b2b2b; padding: 25px; border-radius: 8px; width: 320px; margin: 0 auto; }
+    input, select, textarea { display: block; margin-bottom: 10px; width: 95%; padding: 8px; }
+    button { background: #e67e22; color: white; border: none; padding: 10px; width: 100%; font-weight: bold; cursor: pointer; }
+    a { color: #e67e22; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Únete a URBAN STYLE</h2>
+    <p>Crea tu cuenta de cliente</p>
+    <form id="formUsuario" onsubmit="guardarUsuario(event)">
+      <input type="text" id="run" placeholder="RUN (sin puntos ni guion)" required>
+      <input type="text" id="nombre" placeholder="Nombre" maxlength="50" required>
+      <input type="text" id="apellidos" placeholder="Apellidos" maxlength="100" required>
+      <input type="email" id="email" placeholder="Correo electrónico" maxlength="100" required>
+      <input type="date" id="fechaNac">
+
+      <select id="region" required><option value="">Seleccione Región</option></select>
+      <select id="comuna" required><option value="">Seleccione Comuna</option></select>
+      <textarea id="direccion" placeholder="Dirección para envíos" maxlength="300" required></textarea>
+      <input type="password" id="password" placeholder="Crea tu contraseña" required>
+
+      <button type="submit">Crear Cuenta</button>
+    </form>
+    <p>¿Ya tienes cuenta? <a href="inicio-sesion.html">Inicia Sesión</a></p>
+  </div>
+
+  <script src="../admin/admin.js"></script>
+</body>
+</html>
