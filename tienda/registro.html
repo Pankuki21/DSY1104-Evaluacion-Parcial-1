@@ -1,21 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>URBAN STYLE - Registro de Clientes</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background-color: #1a1a1a; color: white; }
-    .card { background: #2b2b2b; padding: 25px; border-radius: 8px; width: 320px; margin: 0 auto; }
-    input, select, textarea { display: block; margin-bottom: 10px; width: 95%; padding: 8px; }
-    button { background: #e67e22; color: white; border: none; padding: 10px; width: 100%; font-weight: bold; cursor: pointer; }
-    a { color: #e67e22; }
-  </style>
+<head>   
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Creacion de cuenta">
+    <title>Registro | Maderas Finas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../estilos/estilos.css">
 </head>
 <body>
-  <div class="card">
-    <h2>Únete a URBAN STYLE</h2>
-    <p>Crea tu cuenta de cliente</p>
-    <form id="formUsuario" onsubmit="guardarUsuario(event)">
+<header>
+    <nav class="navbar bg-light border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">
+                <img src="../img/logo/logo.jpg"
+                alt="Logo de Maderas Finas"
+                width="80">
+            </a>
+            <ul class="navbar-nav flex-row ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link px-3" href="home.html#inicio">
+                        Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="home.html#nosotros">
+                        Nosotros
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 active" href="productos.html">
+                        Productos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="home.html#blog">
+                        Blog
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="home.html#contacto">
+                        Contacto
+                    </a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="registro.html">Registrarse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="inicio-sesion.html"
+                            aria-label="Iniciar sesión" title="Iniciar sesión">
+                        👤</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="carrito.html"
+                       aria-label="Carrito de compras" title="Carrito de compras">
+                       🛒</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+  <section>
+    <h1>Crea una cuenta</h1>
+    <form id="form-registro">
       <input type="text" id="run" placeholder="RUN (sin puntos ni guion)" required>
       <input type="text" id="nombre" placeholder="Nombre" maxlength="50" required>
       <input type="text" id="apellidos" placeholder="Apellidos" maxlength="100" required>
@@ -30,8 +81,21 @@
       <button type="submit">Crear Cuenta</button>
     </form>
     <p>¿Ya tienes cuenta? <a href="inicio-sesion.html">Inicia Sesión</a></p>
-  </div>
+  </section>
+</main>
 
-  <script src="../admin/admin.js"></script>
+<footer class="py-4">
+  <div class="container text-center">
+      <p class="mb-2">&copy; 2026 Maderas Finas</p>
+      <nav aria-label="Navegación del pie de página">
+          <a href="home.html#inicio">Inicio</a> |
+          <a href="productos.html">Productos</a> |
+          <a href="carrito.html">Carrito</a>
+      </nav>
+  </div>
+</footer>
+
+<script src="../scripts/formularios.js"></script>
+
 </body>
 </html>

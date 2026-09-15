@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>   
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Detalle Mesa de comedor 6 puestos">
+    <title>Mesa de comedor 6 puestos | Maderas Finas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../estilos/estilos.css">
+</head>
+<body>
+<header>
+    <nav class="navbar bg-light border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">
+                <img src="../img/logo/logo.jpg"
+                alt="Logo de Maderas Finas"
+                width="80">
+            </a>
+            <span class="navbar-text">
+                Panel de administración
+            </span>
+        </div>
+    </nav>
+</header>
+
+<main class="container py-4">
+    <h1>Usuarios</h1>
+    <section class="mb-4">
+        <h2>Crear usuario</h2>
+        <form id="formUsuario">
+            <div class="mb-3">
+                <label for="run" class="form-label">RUN</label>
+                <input type="text" id="run" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" id="nombre" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="apellidos" class="form-label">Apellidos</label>
+                <input type="text" id="apellidos" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
+                <input type="date" id="fechaNac" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="tipo" class="form-label">Tipo de usuario</label>
+                <select id="tipo" class="form-select">
+                    <option value="Admin">Admin</option>
+                    <option value="Cliente">Cliente</option>
+                    <option value="Vendedor">Vendedor</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="region" class="form-label">Región</label>
+                <select id="region" class="form-select">
+                    <option value="">Seleccione región</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="comuna" class="form-label">Comuna</label>
+                <select id="comuna" class="form-select">
+                    <option value="">Seleccione comuna</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" id="direccion" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Guardar usuario
+            </button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Lista de usuarios</h2>
+        <div id="lista-usuarios"></div>
+    </section>
+</main>
+
+<footer class="py-4">
+  <div class="container text-center">
+      <p class="mb-2">&copy; 2026 Maderas Finas</p>
+      <nav aria-label="Navegación del pie de página">
+          <a href="home.html#inicio">Inicio</a> |
+          <a href="productos.html">Productos</a> |
+          <a href="carrito.html">Carrito</a>
+      </nav>
+  </div>
+</footer>
+
+<script src="../scripts/admin.js"></script>
+
+</body>
+</html>
