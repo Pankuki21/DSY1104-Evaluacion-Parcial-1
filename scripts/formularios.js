@@ -245,6 +245,25 @@ function esEmailRegistroValido(email) {
 
 }
 
+// Admin inicial
+let usuariosIniciales = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+let  adminExiste = false;
+
+for(let usuario of usuariosIniciales){
+    if (usuario.email === "admin@duoc.cl"){ adminExiste = true;}
+}
+
+if (!adminExiste){
+    usuariosIniciales.push({
+        email: "admin@duoc.cl",
+        password: "Admin123",
+        tipo: "Admin"
+    });
+
+localStorage.setItem("usuarios", JSON.stringify(usuariosIniciales));    
+}
+
 //VALIDACION DE LOGIN
 const formularioLogin = document.getElementById("form-login");
 if (formularioLogin) {

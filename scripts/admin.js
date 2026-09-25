@@ -86,7 +86,7 @@ function cargarRegiones() {
     return;
   }
 
-  selectRegion.innerHTML = 'option value="">Seleccione Región</option>';
+  selectRegion.innerHTML = '<option value="">Seleccione Región</option>';
   for (let item of datosRegiones) {
         const opcion = document.createElement("option");
         opcion.value = item.region;
@@ -181,6 +181,7 @@ function guardarUsuario(evento) {
     const region = document.getElementById("region").value;
     const comuna = document.getElementById("comuna").value;
     const direccion = document.getElementById("direccion").value.trim();
+    const password = document.getElementById("password").value;
 
     // Validar RUN
     if (!validarRUN(run)) {
@@ -260,7 +261,8 @@ function guardarUsuario(evento) {
     // Crear nuevo usuario
     const nuevoUsuario = {run: run, nombre: nombre, apellidos: apellidos,
                           email: email, fechaNac: fechaNac, tipo: tipo,
-                          region: region, comuna: comuna, direccion: direccion};
+                          region: region, comuna: comuna, direccion: direccion,
+                          password: password};
 
     // Agregar usuario
     usuarios.push(nuevoUsuario);
@@ -279,20 +281,21 @@ function listarUsuarios() {
         return;
     }
     tabla.innerHTML = "";
+
     let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     for (let usuario of usuarios) {
         tabla.innerHTML += `
             <tr>
-                <td>${usuario.run}</td>
-                <td>${usuario.nombre} ${usuario.apellidos}</td>
-                <td>${usuario.email}</td>
-                <td>${usuario.tipo}</td>
-                <td>${usuario.comuna}, ${usuario.region}</td>
-                <td>
-                    <button onclick="eliminarUsuario('${usuario.run}')">
-                        Eliminar
-                    </button>
-                </td>
+             <td>${usuario.run}</td>
+             <td>${usuario.nombre} ${usuario.apellidos}</td>
+             <td>${usuario.email}</td>
+             <td>${usuario.tipo}</td>
+             <td>${usuario.comuna}, ${usuario.region}</td>
+             <td>
+                <button onclick="eliminarUsuario('${usuario.run}')">
+                    Eliminar
+                </button>
+             </td>
             </tr>
         `;
     }
@@ -313,16 +316,15 @@ function eliminarUsuario(run) {
 
 //Guardar producto
 function guardarProducto(evento) {
-
     evento.preventDefault();
-    const codigo = document.getElementById("prodCodigo").value.trim();
-    const nombre = document.getElementById("prodNombre").value.trim();
-    const descripcion = document.getElementById("prodDescripcion").value.trim();
-    const precio = Number(document.getElementById("prodPrecio").value);
-    const stock = Number(document.getElementById("prodStock").value);
-    const stockCritico = Number(document.getElementById("prodStockCritico").value);
-    const categoria = document.getElementById("prodCategoria").value;
-    const imagen = document.getElementById("prodImagen").value.trim();
+    const codigo = document.getElementById("codigo").value.trim();
+    const nombre = document.getElementById("nombre").value.trim();
+    const descripcion = document.getElementById("descripcion").value.trim();
+    const precio = Number(document.getElementById("precio").value);
+    const stock = Number(document.getElementById("stock").value);
+    const stockCritico = Number(document.getElementById("stock-critico").value);
+    const categoria = document.getElementById("categoria").value;
+    const imagen = document.getElementById("imagen").value;
 
     if (codigo.length < 3 || nombre === "" || nombre.length > 100) {
         alert("Ingrese un código válido y un nombre válido");
@@ -363,14 +365,14 @@ function guardarProducto(evento) {
     }
 
     localStorage.setItem("productos", JSON.stringify(productos));
-    document.getElementById("formProducto").reset();
+    document.getElementById("form-producto").reset();
     listarProductos();
 }
 
 // Listar productos
 
 function listarProductos() {
-  const tabla = document.querySelector("#tablaProductos tbody");
+  const tabla = document.querySelector("#lista-productos-admin");
 
   if (!tabla) return;
   tabla.innerHTML = "";
@@ -408,14 +410,13 @@ function editarProducto(codigo) {
 
     for (let producto of productos) {
         if (producto.codigo === codigo) {
-            document.getElementById("prodCodigo").value = producto.codigo;
-            document.getElementById("prodNombre").value = producto.nombre;
-            document.getElementById("prodDescripcion").value = producto.descripcion;
-            document.getElementById("prodPrecio").value = producto.precio;
-            document.getElementById("prodStock").value = producto.stock;
-            document.getElementById("prodStockCritico").value = producto.stockCritico;
-            document.getElementById("prodCategoria").value = producto.categoria;
-            document.getElementById("prodImagen").value = producto.imagen;
+            document.getElementById("codigo").value = producto.codigo;
+            document.getElementById("nombre").value = producto.nombre;
+            document.getElementById("descripcion").value = producto.descripcion;
+            document.getElementById("precio").value = producto.precio;
+            document.getElementById("stock").value = producto.stock;
+            document.getElementById("stock-critico").value = producto.stockCritico;
+            document.getElementById("categoria").value = producto.categoria;
             break;
         }
     }
@@ -449,6 +450,15 @@ function inicializar() {
     if (region) {
         region.addEventListener("change", cargarComunas);
     }
+    const formularioUsuario = document.getElementById("formUsuario");
+    if (formularioUsuario) {
+        formularioUsuario.addEventListener("submit", guardarUsuario);
+    }
+    const formularioProducto = document.getElementById("form-producto");
+    if (formularioProducto) {
+        formularioProducto.addEventListener("submit", guardarProducto);
+    }
+    
     listarUsuarios();
     listarProductos();
 }

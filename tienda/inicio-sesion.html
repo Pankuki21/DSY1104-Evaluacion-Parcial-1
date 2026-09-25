@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Detalle Mesa de comedor 6 puestos">
-    <title>Mesa de comedor 6 puestos | Maderas Finas</title>
+    <title>Inicio sesión | Maderas Finas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
@@ -67,11 +67,23 @@
 <main>
   <section>
     <h1>Iniciar Sesión</h1>
-    <form onsubmit="iniciarSesion(event)">
-      <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
-      <input type="password" id="loginPass" placeholder="Contraseña" required>
-      <button type="submit">Ingresar</button>
-    </form>
+    <form id="form-login">
+    <input type="email"
+           id="email-login"
+           class="form-control"
+           placeholder="Correo electrónico"
+           required>
+
+    <label for="password-login">Contraseña</label>
+
+    <input type="password"
+           id="password-login"
+           class="form-control"
+           placeholder="Contraseña"
+           required>
+
+    <button type="submit" class="btn btn-primary">Ingresar</button>
+</form>
     <p>¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
   </section>
 
@@ -87,6 +99,7 @@
 </footer>
 
 <script src="../scripts/formularios.js"></script>
+<script src="../admin/inicio.html"></script>
 
 </body>
 </html>

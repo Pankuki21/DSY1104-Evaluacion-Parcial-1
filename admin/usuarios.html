@@ -54,6 +54,11 @@
             </div>
 
             <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" id="password" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
                 <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
                 <input type="date" id="fechaNac" class="form-control">
             </div>
@@ -94,7 +99,21 @@
 
     <section>
         <h2>Lista de usuarios</h2>
-        <div id="lista-usuarios"></div>
+        <div class="table-responsive">
+            <table id="tablaUsuarios" class="table">
+                <thead>
+                    <tr>
+                        <th>RUN</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Tipo</th>
+                        <th>Ubicación</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </section>
 </main>
 
